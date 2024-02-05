@@ -1,31 +1,17 @@
 <?php
 
-namespace App\Services\V1;
+namespace App\Filters;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Http\Request;
 
-class CustomerQuery
+class ApiFilter
 {
-    protected $safeParms = [
-        'name' => ['eq'],
-        'type' => ['eq'],
-        'email' => ['eq'],
-        'phone' => ['eq'],
-        'address' => ['eq'],
-        'city' => ['eq'],
-        'region' => ['eq'],
-    ];
+    protected $safeParms = [];
 
-    protected $operatorMap = [
-        'eq' => '=',
-        'ne' => '!=',
-        'gt' => '>',
-        'lt' => '<',
-        'gte' => '>=',
-        'lte' => '<=',
-        'like' => 'like',
-    ];
+    protected $columnMap = [];
+
+    protected $operatorMap = [];
 
     public function transform(Request $request)
     {
